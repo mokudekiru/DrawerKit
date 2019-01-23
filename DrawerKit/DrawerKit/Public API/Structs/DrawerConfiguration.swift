@@ -52,6 +52,9 @@ public struct DrawerConfiguration {
     /// state will be computed based on `supportsPartialExpansion` flag.
     public var initialState: DrawerState?
 
+    /// Background color
+    public var backgroundColor: UIColor = .clear
+    
     /// The total duration, in seconds, for the drawer to transition from its
     /// dismissed state to its fully-expanded state, or vice-versa. The default
     /// value is 0.4 seconds.
