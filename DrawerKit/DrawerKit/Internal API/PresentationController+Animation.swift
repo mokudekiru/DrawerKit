@@ -1,6 +1,14 @@
 import UIKit
 
 extension PresentationController {
+    func animateDimming(to percent: CGFloat) {
+        let per = min(max(percent, 0), 1)
+        let color = self.containerView?.backgroundColor?.withAlphaComponent(configuration.backgroundColor.cgColor.alpha * per)
+        UIView.animate(withDuration: 0.1) {
+            self.containerView?.backgroundColor = color
+        }
+    }
+    
     func animateTransition(to endingState: DrawerState, animateAlongside: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
         let startingState = currentDrawerState
 
@@ -23,7 +31,7 @@ extension PresentationController {
 
         var endingFrame = presentedViewFrame
         endingFrame.origin.y = endingPositionY
-
+        
         let geometry = AnimationSupport.makeGeometry(containerBounds: containerViewBounds,
                                                      startingFrame: startingFrame,
                                                      endingFrame: endingFrame,

@@ -14,6 +14,8 @@ final class PresentationController: UIPresentationController {
     var drawerDismissalTapGR: UITapGestureRecognizer?
     var drawerDragGR: UIPanGestureRecognizer?
 
+    var animationPosition: CGFloat = 0
+
     /// The target state of the drawer. If no presentation animation is in
     /// progress, the value should be equivalent to `currentDrawerState`.
     var targetDrawerState: DrawerState {
@@ -58,7 +60,7 @@ final class PresentationController: UIPresentationController {
         self.presentingDrawerAnimationActions = presentingDrawerAnimationActions
         self.presentedDrawerAnimationActions = presentedDrawerAnimationActions
         self.targetDrawerState = configuration.initialState ?? (configuration.supportsPartialExpansion ? .partiallyExpanded : .fullyExpanded)
-
+        
         super.init(presentedViewController: presentedVC, presenting: presentingVC)
     }
 
@@ -121,7 +123,7 @@ extension PresentationController {
         gestureAvailabilityConditionsDidChange()
 
         presentedViewController.view.layoutIfNeeded()
-        containerView?.backgroundColor = .clear
+        containerView?.backgroundColor = configuration.backgroundColor
         setupDrawerFullExpansionTapRecogniser()
         setupDrawerDismissalTapRecogniser()
         setupDrawerDragRecogniser()

@@ -16,7 +16,7 @@ class PresentedViewController: UIViewController {
             (notification: DrawerNotification, object: Any?) in
             switch notification {
             case .drawerExteriorTapped:
-                print("drawerExteriorTapped")
+                break
             default:
                 break
             }

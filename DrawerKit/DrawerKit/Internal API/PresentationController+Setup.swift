@@ -1,5 +1,4 @@
 import UIKit
-
 extension PresentationController {
     func setupPresentationContainerView() {
         guard self.presentationContainerView == nil else { return }
